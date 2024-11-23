@@ -72,7 +72,7 @@ for (let i = 1; i <= 5; i++) {
 // implement OOP in js: function constructor, ES6 classes, Object.create()
 
 // function constructor
-
+/*
 const Person = function (firstName, age) {
   this.firstName = firstName;
   this.age = age;
@@ -109,3 +109,104 @@ console.log(negin.__proto__.__proto__.__proto__);
 // set function this keyword to {}
 // link {} to function prototype
 // return {}
+*/
+
+// ES6 classes
+/*
+class Person {
+  constructor(firstName, age) {
+    this.firstName = firstName;
+    this._age = age;
+  }
+
+  greeting() {
+    console.log(
+      `Hey my name is ${this.firstName} and i'm ${this.age} years old.`
+    );
+  }
+
+  set age(newAge) {
+    if (newAge > 0 && newAge <= 100) this._age = newAge;
+  }
+
+  get age() {
+    return this._age;
+  }
+
+  static sayHello() {
+    console.log("hello");
+  }
+}
+
+const negin = new Person("Negin", 20);
+
+negin.greeting();
+
+console.log(negin.age);
+negin.age = 250;
+console.log(negin.age);
+
+// negin.sayHello();
+Person.sayHello();
+*/
+
+class Person {
+  constructor(firstName, age) {
+    this.firstName = firstName;
+    this._age = age;
+  }
+
+  greeting() {
+    console.log(
+      `Hey my name is ${this.firstName} and i'm ${this.age} years old.`
+    );
+  }
+
+  set age(newAge) {
+    if (newAge > 0 && newAge <= 100) this._age = newAge;
+  }
+
+  get age() {
+    return this._age;
+  }
+
+  static sayHello() {
+    console.log("hello");
+  }
+}
+
+// public property
+// public methods
+// private property
+// private methods
+
+class Student extends Person {
+  #university;
+
+  constructor(firstName, age, course) {
+    super(firstName, age);
+
+    this.course = course;
+    this.#university = "sharif";
+  }
+
+  greeting() {
+    console.log(
+      `Hey my name is ${this.firstName} and i'm ${
+        this.age
+      } years old and ${this.#getUniversityAndCourse()}`
+    );
+  }
+
+  #getUniversityAndCourse() {
+    return `i'm study ${this.course} and my university is ${this.#university}.`;
+  }
+}
+
+const narges = new Student("Narges", 20, "Computer science");
+
+console.log(narges);
+narges.greeting();
+
+// console.log(narges.#university);
+// narges.#getUniversityAndCourse();
